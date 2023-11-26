@@ -1,0 +1,30 @@
+POST 127.0.0.1:3000/add-card
+Content-Type: application/json
+
+{"owner": "Ivan Ivanov", "number": "2200_0000_1111_2222", "cvv": "300"}
+
+###
+
+GET 127.0.0.1:3000/cards
+Content-Type: application/json
+
+###
+
+POST 127.0.0.1:3000/deposit
+Content-Type: application/json
+
+{"cardIndex": 0, "amount": 2000}
+
+###
+
+POST 127.0.0.1:3000/withdrawal
+Content-Type: application/json
+
+{"cardIndex": 0, "amount": 50}
+
+###
+
+POST 127.0.0.1:3000/transfer
+Content-Type: application/json
+
+{"fromIndex" : 0, "toIndex": 1, "amount": 100}
