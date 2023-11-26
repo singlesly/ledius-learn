@@ -1,12 +1,16 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { Bank, Card } from './banking';
+import { AddCardDto } from "./dto/add-card.dto";
+import { DepositDto } from "./dto/deposit.dto";
+import { WithdrawalDto } from "./dto/withdrawal.dto";
+import { TransferDto } from "./dto/transfer.dto";
 
 @Controller()
 export class BankingController {
   bank = new Bank('Green Bank');
 
   @Post('add-card')
-  public addCard(@Body() body) {
+  public addCard(@Body() body: AddCardDto) {
     const card = new Card(body.owner, body.number, body.cvv, 0);
     this.bank.addCard(card);
 
@@ -22,7 +26,7 @@ export class BankingController {
   }
 
   @Post('deposit')
-  public deposit(@Body() body) {
+  public deposit(@Body() body: DepositDto) {
     const cardIndex = body.cardIndex;
 
     const card = this.bank.cards[cardIndex];
@@ -33,7 +37,7 @@ export class BankingController {
   }
 
   @Post('withdrawal')
-  public withdrawal(@Body() body) {
+  public withdrawal(@Body() body: WithdrawalDto) {
     const cardIndex = body.cardIndex;
 
     const card = this.bank.cards[cardIndex];
@@ -44,7 +48,7 @@ export class BankingController {
   }
 
   @Post('transfer')
-  public transfer(@Body() body) {
+  public transfer(@Body() body: TransferDto) {
     const fromIndex = body.fromIndex;
     const toIndex = body.toIndex;
 
