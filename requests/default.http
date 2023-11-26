@@ -1,0 +1,17 @@
+GET http://127.0.0.1:3000/
+
+
+###
+
+GET http://127.0.0.1:3000/list
+
+###
+
+GET http://127.0.0.1:3000/object
+
+###
+
+POST http://127.0.0.1:3000/object
+Content-Type: application/json
+
+{"name": "Petr", "age": 30}
