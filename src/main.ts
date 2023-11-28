@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { DataSource } from 'typeorm/data-source/DataSource';
+import { Card } from './banking';
 
 async function main() {
   const app = await NestFactory.create(AppModule);
@@ -14,8 +16,6 @@ async function main() {
   SwaggerModule.setup('/api/docs', app, document);
 
   await app.listen(3000);
-
-
 }
 
 main();

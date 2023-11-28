@@ -1,3 +1,6 @@
+import { randomUUID } from 'crypto';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
+
 export class Bank {
   name: string;
   cards: Card[] = [];
@@ -10,18 +13,24 @@ export class Bank {
   }
 }
 
+@Entity('cards')
 export class Card {
+  @PrimaryColumn('uuid')
+  id: string = randomUUID();
+
+  @Column()
   owner: string;
+
+  @Column()
   number: string;
+
+  @Column()
   cvv: string;
+
+  @Column()
   balance: number;
 
-  constructor(
-    owner: string,
-    number: string,
-    cvv: string,
-    balance: number,
-  ) {
+  constructor(owner: string, number: string, cvv: string, balance: number) {
     this.owner = owner;
     this.number = number;
     this.cvv = cvv;
