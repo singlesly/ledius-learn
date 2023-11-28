@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { BankingController } from './banking.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Card } from './banking';
+import { Bank, Card } from './banking';
 
 @Module({
   imports: [
@@ -13,7 +13,7 @@ import { Card } from './banking';
       username: 'postgres',
       password: '*k34kKdm',
       database: 'banking',
-      entities: [Card],
+      entities: [Card, Bank],
     }),
   ],
   controllers: [AppController, BankingController],

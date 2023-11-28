@@ -1,9 +1,16 @@
 import { randomUUID } from 'crypto';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
 
+@Entity('banks')
 export class Bank {
+  @PrimaryColumn('uuid')
+  id: string = randomUUID();
+
+  @Column()
   name: string;
-  cards: Card[] = [];
+
+  @OneToMany(() => Card, (card) => card.bank)
+  cards: Card[];
   constructor(name: string) {
     this.name = name;
   }
@@ -29,6 +36,9 @@ export class Card {
 
   @Column()
   balance: number;
+
+  @ManyToOne(() => Bank)
+  bank: Bank;
 
   constructor(owner: string, number: string, cvv: string, balance: number) {
     this.owner = owner;
