@@ -16,6 +16,9 @@ export class Bank {
   }
 
   addCard(card: Card) {
+    if (!this.cards) {
+      this.cards = [];
+    }
     this.cards.push(card);
   }
 }

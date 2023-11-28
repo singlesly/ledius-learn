@@ -1,14 +1,13 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class WithdrawalDto {
-
   @ApiProperty({
-    example: 0
+    example: 0,
   })
-  cardIndex: number;
+  cardId: string;
 
   @ApiProperty({
-    example: 2000
+    example: 2000,
   })
   amount: number;
 }

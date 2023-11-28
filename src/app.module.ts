@@ -15,6 +15,7 @@ import { Bank, Card } from './banking';
       database: 'banking',
       entities: [Card, Bank],
     }),
+    TypeOrmModule.forFeature([Card, Bank]),
   ],
   controllers: [AppController, BankingController],
 })

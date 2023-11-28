@@ -4,12 +4,12 @@ export class TransferDto {
   @ApiProperty({
     example: 0,
   })
-  fromIndex: number;
+  fromCardId: string;
 
   @ApiProperty({
     example: 1,
   })
-  toIndex: number;
+  toCardId: string;
 
   @ApiProperty({
     example: 100,
